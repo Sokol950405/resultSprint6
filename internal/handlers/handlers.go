@@ -14,7 +14,8 @@ import (
 // IndexHandler - handler from /
 // return HTML from file index.html
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	err := os.Chdir("..")
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+
 	// open file index.html
 	file, err := os.Open("index.html")
 	if err != nil {
@@ -23,7 +24,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
-	w.Header().Set("Content-Type", "text/html")
 	// return file HTML
 	_, err = io.Copy(w, file)
 	if err != nil {
