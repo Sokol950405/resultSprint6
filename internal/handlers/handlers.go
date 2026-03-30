@@ -14,7 +14,7 @@ import (
 // IndexHandler - handler from /
 // return HTML from file index.html
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.Header().Set("Content-Type", "text/html")
 
 	// open file index.html
 	file, err := os.Open("index.html")
